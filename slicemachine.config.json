@@ -1,0 +1,6 @@
+{
+  "libraries": ["./slices"],
+  "repositoryName": "ersafolyo",
+  "adapter": "@slicemachine/adapter-nuxt",
+  "localSliceSimulatorURL": "http://localhost:3000/slice-simulator"
+}
