@@ -11,25 +11,25 @@
       id="swiper-slide"
     >
       <div
-        class="relative flex aspect-video min-w-full items-end bg-gradient-to-r from-zinc-950 to-zinc-950 object-cover p-8"
+        class="relative flex aspect-video min-w-full items-end object-cover p-6 md:p-8"
       >
         <PrismicImage
           :field="item.bg_image"
           :width="item.bg_image.dimensions?.width"
           :heights="item.bg_image.dimensions?.height"
           :alt="item.bg_image.alt"
-          class="absolute inset-0 block min-h-full min-w-full"
+          class="absolute inset-0 block min-h-full min-w-full brightness-75"
         />
         <PrismicRichText
           :field="item.title"
-          class="z-50 text-xl font-semibold text-white md:text-4xl"
+          class="z-50 text-balance text-xl font-semibold text-white md:text-4xl"
         />
       </div>
     </swiper-slide>
   </swiper-container>
 
   <div
-    class="swiper-pagination bg-secondary-700/10 flex items-center justify-center rounded-full px-4 py-6"
+    class="swiper-pagination flex items-center justify-center px-4 py-8"
   ></div>
 </template>
 
