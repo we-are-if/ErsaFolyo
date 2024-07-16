@@ -1,0 +1,67 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading1",
+						"content": {
+							"text": "Engine"
+						}
+					}
+				]
+			},
+			"body": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Anim officia sit Lorem pariatur in culpa laboris nostrud mollit pariatur Lorem. Adipisicing duis incididunt nisi pariatur laborum ipsum qui. Ullamco adipisicing in voluptate commodo culpa cupidatat aliqua laboris quis ex elit dolore."
+						}
+					}
+				]
+			},
+			"cta": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"link",
+								{
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "http://google.com"
+									}
+								}
+							],
+							[
+								"label",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "guard",
+									"type": "Text"
+								}
+							],
+							[
+								"type",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "primary"
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

@@ -16,7 +16,7 @@ export default defineNuxtConfig({
         { hid: "description", name: "description", content: "" },
         { name: "format-detection", content: "telephone=no" },
       ],
-      link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+      link: [{ rel: "icon", type: "image/svg", href: "/logo.svg" }],
     },
   },
 
@@ -37,6 +37,13 @@ export default defineNuxtConfig({
           path: "/",
         },
       ],
+    },
+  },
+
+  vue: {
+    compilerOptions: {
+      isCustomElement: (tag) =>
+        ["swiper-container", "swiper-slide"].includes(tag),
     },
   },
 });

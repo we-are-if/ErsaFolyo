@@ -1,21 +1,18 @@
 <script setup lang="ts">
-import { components } from '~/slices'
+import { components } from "~/slices";
 
-const prismic = usePrismic()
-const { data: page } = useAsyncData('index', () =>
-  prismic.client.getByUID('page', 'home')
-)
+const prismic = usePrismic();
+const { data: page } = useAsyncData("index", () =>
+  prismic.client.getByUID("page", "home"),
+);
 
 useHead({
-  title: prismic.asText(page.value?.data.title)
-})
+  title: page.value?.data.meta_title ?? "",
+  description: page.value?.data.meta_description ?? "",
+  OGImage: page.value?.data.og_image,
+});
 </script>
 
-
 <template>
-  <SliceZone
-    wrapper="main"
-    :slices="page?.data.slices ?? []"
-    :components="components"
-  />
+  <SliceZone :slices="page?.data.slices ?? []" :components="components" />
 </template>

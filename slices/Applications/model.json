@@ -1,0 +1,48 @@
+{
+  "id": "applications",
+  "type": "SharedSlice",
+  "name": "Applications",
+  "description": "Applications",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "application": {
+          "type": "Group",
+          "config": {
+            "label": "Application",
+            "repeat": true,
+            "fields": {
+              "title": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Title",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "heading3"
+                }
+              },
+              "bg_image": {
+                "type": "Image",
+                "config": {
+                  "label": "Bg Image",
+                  "constraint": {
+                    "width": 1216,
+                    "height": 680
+                  },
+                  "thumbnails": []
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
