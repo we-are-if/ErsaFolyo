@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+  scroll-margin-top: 200px;
+}
+
 /* ******* */
 /* Wrapper */
 /* ******* */

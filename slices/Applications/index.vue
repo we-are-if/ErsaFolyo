@@ -21,6 +21,7 @@ defineProps(
     :data-slice-type="slice.slice_type"
     :data-slice-variation="slice.variation"
     class="full-width content-grid"
+    id="applications"
   >
     <ImageSlider :slideContent="slice.primary.application" />
   </section>
