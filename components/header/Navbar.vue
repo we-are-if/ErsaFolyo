@@ -1,20 +1,28 @@
 <template>
   <nav class="nav-main hidden min-w-fit items-center gap-1.5 md:flex">
-    <PrismicLink
-      v-for="navItem in settings.data.navigation"
-      :key="navItem.link.url"
-      :field="navItem.link"
+    <NuxtLink
+      v-for="navItem in currentNavLinks.slice(0, currentNavLinks.length - 1)"
+      :key="navItem.slug"
+      :to="localePath(navItem.slug)"
       class="btn nav-item relative transition-colors hover:bg-zinc-100"
     >
       {{ navItem.label }}
-    </PrismicLink>
+    </NuxtLink>
   </nav>
 </template>
 
 <script setup>
-import { useSettings } from "~/composables/useSettings";
+import { computed } from "vue";
+import { useI18n } from "vue-i18n"; // Adjust according to your i18n setup
+import navLinks from "~/data/navLinks.json";
+import navLinksTR from "~/data/navLinksTR.json";
 
-const settings = useSettings();
+const { locale } = useI18n();
+const localePath = useLocalePath();
+
+const currentNavLinks = computed(() => {
+  return locale.value === "tr" ? navLinksTR : navLinks;
+});
 </script>
 
 <style scoped>

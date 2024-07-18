@@ -1,0 +1,22 @@
+[
+  {
+    "slug": "/",
+    "label": "home"
+  },
+  {
+    "slug": "/#about-us",
+    "label": "About us"
+  },
+  {
+    "slug": "/",
+    "label": "Product catalog"
+  },
+  {
+    "slug": "/#applications",
+    "label": "Applications"
+  },
+  {
+    "slug": "/contact-us",
+    "label": "Contact us"
+  }
+]

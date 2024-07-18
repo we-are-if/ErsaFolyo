@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { type Content } from "@prismicio/client";
 
+const localePath = useLocalePath();
+
 // The array passed to `getSliceComponentProps` is purely optional.
 // Consider it as a visual hint for you when templating your slice.
 defineProps(
@@ -28,15 +30,22 @@ defineProps(
       class="max-w-[45ch] text-base text-zinc-600 md:text-lg"
     />
     <div class="btn-container flex items-center justify-center gap-8 pt-[17px]">
-      <PrismicLink
-        v-for="(item, index) in slice.primary.cta"
+      <NuxtLink
+        v-for="(item, index) in slice.primary.cta.slice(0, 1)"
         :key="index"
-        :field="item.link"
-        class="btn"
-        :class="item.type === 'primary' ? 'btn-primary' : 'btn-secondary'"
+        :to="localePath('/contact-us')"
+        class="btn btn-primary"
       >
         {{ item.label }}
-      </PrismicLink>
+      </NuxtLink>
+      <NuxtLink
+        v-for="(item, index) in slice.primary.cta.slice(-1)"
+        :key="index"
+        :to="localePath('/contact-us')"
+        class="btn btn-secondary"
+      >
+        {{ item.label }}
+      </NuxtLink>
     </div>
   </main>
 </template>

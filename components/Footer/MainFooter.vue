@@ -2,9 +2,9 @@
   <footer
     class="flex items-center justify-between border-t border-zinc-200 py-5"
   >
-    <PrismicLink :field="settings.data.navigation[0].link">
+    <NuxtLink :to="localePath('/')">
       <Logo class="!min-w-min" />
-    </PrismicLink>
+    </NuxtLink>
 
     <p>
       {{ locale === "en-us" ? "All Rights Reserved" : "Tüm Hakları Saklıdır" }}
@@ -19,9 +19,7 @@
 <script setup>
 import Logo from "~/components/Logo.vue";
 
-import { useSettings } from "~/composables/useSettings";
-
-const settings = useSettings();
+const localePath = useLocalePath();
 
 const { locale } = useI18n();
 </script>

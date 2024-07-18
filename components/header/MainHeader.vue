@@ -3,9 +3,9 @@
     class="full-width content-grid sticky left-0 right-0 top-0 z-50 border-b border-zinc-200 py-4"
   >
     <div class="flex items-center justify-between">
-      <PrismicLink :field="settings.data.navigation[0].link">
+      <NuxtLink :to="localePath('/')">
         <Logo />
-      </PrismicLink>
+      </NuxtLink>
 
       <Navbar />
       <div class="lang-select flex items-center gap-4">
@@ -19,29 +19,33 @@
         </NuxtLink>
 
         <div class="decorative h-3 w-px bg-zinc-400" aria-hidden="true" />
-        <PrismicLink
-          v-for="item in settings.data.contact_us"
-          :key="item.label"
-          :field="item.link"
+        <NuxtLink
+          v-for="item in currentNavLinks.slice(-1)"
+          :key="item.slug"
+          :to="localePath(item.slug)"
           class="btn btn-primary"
         >
           {{ item.label }}
-        </PrismicLink>
+        </NuxtLink>
       </div>
     </div>
   </header>
 </template>
-
 <script setup>
+import { computed } from "vue";
+import { useI18n } from "vue-i18n";
 import Navbar from "./Navbar.vue";
-import { useSettings } from "~/composables/useSettings";
 
-const settings = useSettings();
+import navLinks from "~/data/navLinks.json";
+import navLinksTR from "~/data/navLinksTR.json";
 
 const { locale, locales } = useI18n();
-const switchLocalePath = useSwitchLocalePath();
-</script>
+const localePath = useLocalePath();
 
+const currentNavLinks = computed(() => {
+  return locale.value === "tr" ? navLinksTR : navLinks;
+});
+</script>
 <style scoped>
 header {
   background:

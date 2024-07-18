@@ -1,0 +1,22 @@
+[
+  {
+    "slug": "/",
+    "label": "Ana Sayfa"
+  },
+  {
+    "slug": "/#about-us",
+    "label": "Hakkımızda"
+  },
+  {
+    "slug": "/",
+    "label": "Ürün Kataloğu"
+  },
+  {
+    "slug": "/#applications",
+    "label": "Ürün Kataloğu"
+  },
+  {
+    "slug": "/contact-us",
+    "label": "Bize Ulaşın"
+  }
+]
