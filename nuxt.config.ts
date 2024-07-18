@@ -20,7 +20,24 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ["@nuxtjs/prismic", "@nuxtjs/tailwindcss"],
+  modules: ["@nuxtjs/prismic", "@nuxtjs/tailwindcss", "@nuxtjs/i18n"],
+
+  // Localization options
+  i18n: {
+    // Module Options
+    locales: [
+      {
+        code: "en-us",
+        name: "EN",
+      },
+      {
+        code: "tr",
+        name: "TR",
+      },
+    ],
+    defaultLocale: "en-us",
+    strategy: "prefix_except_default",
+  },
 
   prismic: {
     endpoint: apiEndpoint || repositoryName,
@@ -30,6 +47,11 @@ export default defineNuxtConfig({
         {
           type: "page",
           path: "/:uid",
+        },
+        {
+          type: "page",
+          uid: "contact-us",
+          path: "/contact-us",
         },
         {
           type: "page",

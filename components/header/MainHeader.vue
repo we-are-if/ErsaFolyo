@@ -9,8 +9,15 @@
 
       <Navbar />
       <div class="lang-select flex items-center gap-4">
-        <p class="text-sm font-medium text-zinc-600">EN</p>
-        <p class="text-sm font-medium text-zinc-600">TR</p>
+        <NuxtLink
+          v-for="{ code, name } in locales"
+          :key="code"
+          :to="switchLocalePath(code)"
+          class="text-sm font-medium text-zinc-600"
+        >
+          {{ name }}
+        </NuxtLink>
+
         <div class="decorative h-3 w-px bg-zinc-400" aria-hidden="true" />
         <PrismicLink
           v-for="item in settings.data.contact_us"
@@ -30,6 +37,9 @@ import Navbar from "./Navbar.vue";
 import { useSettings } from "~/composables/useSettings";
 
 const settings = useSettings();
+
+const { locale, locales } = useI18n();
+const switchLocalePath = useSwitchLocalePath();
 </script>
 
 <style scoped>

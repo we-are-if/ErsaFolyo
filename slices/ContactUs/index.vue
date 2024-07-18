@@ -11,6 +11,8 @@ defineProps(
     "context",
   ]),
 );
+
+const localePath = useLocalePath();
 </script>
 
 <template>

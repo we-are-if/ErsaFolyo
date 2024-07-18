@@ -2,8 +2,10 @@
 import { components } from "~/slices";
 
 const prismic = usePrismic();
+const { locale } = useI18n();
+
 const { data: page } = useAsyncData("index", () =>
-  prismic.client.getByUID("page", "home"),
+  prismic.client.getByUID("page", "home", { lang: locale.value }),
 );
 
 useHead({
