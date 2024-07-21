@@ -4,15 +4,8 @@ import { components } from "~/slices";
 const prismic = usePrismic();
 const { locale } = useI18n();
 
-const { data: page } = useAsyncData("index", () =>
-  prismic.client.getByUID("page", "home", {
-    lang: locale.value,
-    fetchLinks: [
-      "product_catalog.background_image",
-      "product_catalog.product_type",
-      "product_catalog.uid",
-    ],
-  }),
+const { data: page } = useAsyncData("bright-colors", () =>
+  prismic.client.getByUID("page", "bright-colors", { lang: locale.value }),
 );
 
 useHead({

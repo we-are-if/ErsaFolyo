@@ -5,6 +5,7 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type PageDocumentDataSlicesSlice =
+  | ProductCatalogSlice
   | ContactFormSlice
   | ContactUsSlice
   | ApplicationsSlice
@@ -80,6 +81,49 @@ interface PageDocumentData {
  */
 export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
+
+/**
+ * Content for Product Catalog documents
+ */
+interface ProductCatalogDocumentData {
+  /**
+   * Background Image field in *Product Catalog*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product_catalog.background_image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  background_image: prismic.ImageField<never>;
+
+  /**
+   * Product Type field in *Product Catalog*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product_catalog.product_type
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  product_type: prismic.TitleField;
+}
+
+/**
+ * Product Catalog document from Prismic
+ *
+ * - **API ID**: `product_catalog`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ProductCatalogDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<ProductCatalogDocumentData>,
+    "product_catalog",
+    Lang
+  >;
 
 /**
  * Item in *Settings → Navigation*
@@ -207,7 +251,10 @@ export type SettingsDocument<Lang extends string = string> =
     Lang
   >;
 
-export type AllDocumentTypes = PageDocument | SettingsDocument;
+export type AllDocumentTypes =
+  | PageDocument
+  | ProductCatalogDocument
+  | SettingsDocument;
 
 /**
  * Item in *AboutUs → Default → Primary → body*
@@ -669,6 +716,78 @@ export type HeroSectionSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *ProductCatalog → Default → Primary → Products*
+ */
+export interface ProductCatalogSliceDefaultPrimaryProductsItem {
+  /**
+   * Product field in *ProductCatalog → Default → Primary → Products*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product_catalog.default.primary.products[].product
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  product: prismic.ContentRelationshipField<"product_catalog">;
+}
+
+/**
+ * Primary content in *ProductCatalog → Default → Primary*
+ */
+export interface ProductCatalogSliceDefaultPrimary {
+  /**
+   * Section Title field in *ProductCatalog → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product_catalog.default.primary.section_title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  section_title: prismic.RichTextField;
+
+  /**
+   * Products field in *ProductCatalog → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product_catalog.default.primary.products[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  products: prismic.GroupField<
+    Simplify<ProductCatalogSliceDefaultPrimaryProductsItem>
+  >;
+}
+
+/**
+ * Default variation for ProductCatalog Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProductCatalogSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ProductCatalogSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ProductCatalog*
+ */
+type ProductCatalogSliceVariation = ProductCatalogSliceDefault;
+
+/**
+ * ProductCatalog Shared Slice
+ *
+ * - **API ID**: `product_catalog`
+ * - **Description**: ProductCatalog
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProductCatalogSlice = prismic.SharedSlice<
+  "product_catalog",
+  ProductCatalogSliceVariation
+>;
+
+/**
  * Primary content in *RichText → Default → Primary*
  */
 export interface RichTextSliceDefaultPrimary {
@@ -726,6 +845,8 @@ declare module "@prismicio/client" {
       PageDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,
+      ProductCatalogDocument,
+      ProductCatalogDocumentData,
       SettingsDocument,
       SettingsDocumentData,
       SettingsDocumentDataNavigationItem,
@@ -755,6 +876,11 @@ declare module "@prismicio/client" {
       HeroSectionSliceDefaultPrimary,
       HeroSectionSliceVariation,
       HeroSectionSliceDefault,
+      ProductCatalogSlice,
+      ProductCatalogSliceDefaultPrimaryProductsItem,
+      ProductCatalogSliceDefaultPrimary,
+      ProductCatalogSliceVariation,
+      ProductCatalogSliceDefault,
       RichTextSlice,
       RichTextSliceDefaultPrimary,
       RichTextSliceVariation,
