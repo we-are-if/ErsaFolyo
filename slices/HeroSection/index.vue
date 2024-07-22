@@ -41,7 +41,7 @@ defineProps(
       <NuxtLink
         v-for="(item, index) in slice.primary.cta.slice(-1)"
         :key="index"
-        :to="localePath('/contact-us')"
+        :to="localePath('/#product-catalog')"
         class="btn btn-secondary"
       >
         {{ item.label }}
