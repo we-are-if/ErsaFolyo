@@ -376,11 +376,88 @@ export type SettingsDocument<Lang extends string = string> =
     Lang
   >;
 
+type SingleproductDocumentDataSlicesSlice = SingleProductSlice;
+
+/**
+ * Content for SingleProduct documents
+ */
+interface SingleproductDocumentData {
+  /**
+   * Title field in *SingleProduct*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: singleproduct.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Slice Zone field in *SingleProduct*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: singleproduct.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<SingleproductDocumentDataSlicesSlice> /**
+   * Meta Title field in *SingleProduct*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: singleproduct.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *SingleProduct*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: singleproduct.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *SingleProduct*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: singleproduct.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * SingleProduct document from Prismic
+ *
+ * - **API ID**: `singleproduct`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type SingleproductDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<SingleproductDocumentData>,
+    "singleproduct",
+    Lang
+  >;
+
 export type AllDocumentTypes =
   | PageDocument
   | ProductCatalogDocument
   | ProductsDocument
-  | SettingsDocument;
+  | SettingsDocument
+  | SingleproductDocument;
 
 /**
  * Item in *AboutUs → Default → Primary → body*
@@ -1017,6 +1094,155 @@ export type RichTextSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *SingleProduct → Default → Primary → Product Description*
+ */
+export interface SingleProductSliceDefaultPrimaryProductDescriptionItem {
+  /**
+   * Title field in *SingleProduct → Default → Primary → Product Description*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: single_product.default.primary.product_description[].title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Description field in *SingleProduct → Default → Primary → Product Description*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: single_product.default.primary.product_description[].description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+}
+
+/**
+ * Item in *SingleProduct → Default → Primary → Image List*
+ */
+export interface SingleProductSliceDefaultPrimaryImageListItem {
+  /**
+   * Image field in *SingleProduct → Default → Primary → Image List*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: single_product.default.primary.image_list[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Primary content in *SingleProduct → Default → Primary*
+ */
+export interface SingleProductSliceDefaultPrimary {
+  /**
+   * Title field in *SingleProduct → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: single_product.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Main Image field in *SingleProduct → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: single_product.default.primary.main_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  main_image: prismic.ImageField<never>;
+
+  /**
+   * Product Description field in *SingleProduct → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: single_product.default.primary.product_description[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  product_description: prismic.GroupField<
+    Simplify<SingleProductSliceDefaultPrimaryProductDescriptionItem>
+  >;
+
+  /**
+   * Image List field in *SingleProduct → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: single_product.default.primary.image_list[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  image_list: prismic.GroupField<
+    Simplify<SingleProductSliceDefaultPrimaryImageListItem>
+  >;
+
+  /**
+   * Want to know more title field in *SingleProduct → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: single_product.default.primary.want_to_know_more_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  want_to_know_more_title: prismic.KeyTextField;
+
+  /**
+   * email field in *SingleProduct → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: single_product.default.primary.email
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  email: prismic.KeyTextField;
+
+  /**
+   * submit button text field in *SingleProduct → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: single_product.default.primary.submit_button_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  submit_button_text: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for SingleProduct Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SingleProductSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<SingleProductSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *SingleProduct*
+ */
+type SingleProductSliceVariation = SingleProductSliceDefault;
+
+/**
+ * SingleProduct Shared Slice
+ *
+ * - **API ID**: `single_product`
+ * - **Description**: SingleProduct
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SingleProductSlice = prismic.SharedSlice<
+  "single_product",
+  SingleProductSliceVariation
+>;
+
+/**
  * Item in *SubProduct → Default → Primary → Sub Product*
  */
 export interface SubProductSliceDefaultPrimarySubProductItem {
@@ -1111,6 +1337,9 @@ declare module "@prismicio/client" {
       SettingsDocumentData,
       SettingsDocumentDataNavigationItem,
       SettingsDocumentDataContactUsItem,
+      SingleproductDocument,
+      SingleproductDocumentData,
+      SingleproductDocumentDataSlicesSlice,
       AllDocumentTypes,
       AboutUsSlice,
       AboutUsSliceDefaultPrimaryBodyItem,
@@ -1148,6 +1377,12 @@ declare module "@prismicio/client" {
       RichTextSliceDefaultPrimary,
       RichTextSliceVariation,
       RichTextSliceDefault,
+      SingleProductSlice,
+      SingleProductSliceDefaultPrimaryProductDescriptionItem,
+      SingleProductSliceDefaultPrimaryImageListItem,
+      SingleProductSliceDefaultPrimary,
+      SingleProductSliceVariation,
+      SingleProductSliceDefault,
       SubProductSlice,
       SubProductSliceDefaultPrimarySubProductItem,
       SubProductSliceDefaultPrimary,
