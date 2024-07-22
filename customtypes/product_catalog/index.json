@@ -28,6 +28,32 @@
           "label": "UID"
         },
         "type": "UID"
+      },
+      "subproducts": {
+        "type": "Group",
+        "config": {
+          "label": "SubProducts",
+          "repeat": true,
+          "fields": {
+            "sub_product": {
+              "type": "Image",
+              "config": {
+                "label": "sub Product",
+                "constraint": {},
+                "thumbnails": []
+              }
+            },
+            "sub_product_title": {
+              "type": "StructuredText",
+              "config": {
+                "label": "Sub Product Title",
+                "placeholder": "",
+                "allowTargetBlank": true,
+                "multi": "heading2"
+              }
+            }
+          }
+        }
       }
     }
   }

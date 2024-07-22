@@ -17,7 +17,7 @@ defineProps(
   <section
     :data-slice-type="slice.slice_type"
     :data-slice-variation="slice.variation"
-    class="full-width content-grid scroll-pt-28 space-y-16 rounded-t-[32px] bg-zinc-800 pt-20 lg:pt-28"
+    class="full-width content-grid space-y-16 rounded-t-[32px] bg-zinc-800 pt-20 lg:pt-28"
     id="about-us"
   >
     <PrismicRichText

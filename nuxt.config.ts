@@ -6,7 +6,7 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: "Prismic + Nuxt Minimal Starter",
+      title: "ErsaFolyo",
       htmlAttrs: {
         lang: "en",
       },

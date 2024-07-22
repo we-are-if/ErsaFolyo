@@ -83,6 +83,31 @@ export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
 /**
+ * Item in *Product Catalog → SubProducts*
+ */
+export interface ProductCatalogDocumentDataSubproductsItem {
+  /**
+   * sub Product field in *Product Catalog → SubProducts*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product_catalog.subproducts[].sub_product
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  sub_product: prismic.ImageField<never>;
+
+  /**
+   * Sub Product Title field in *Product Catalog → SubProducts*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product_catalog.subproducts[].sub_product_title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  sub_product_title: prismic.RichTextField;
+}
+
+/**
  * Content for Product Catalog documents
  */
 interface ProductCatalogDocumentData {
@@ -107,6 +132,19 @@ interface ProductCatalogDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   product_type: prismic.TitleField;
+
+  /**
+   * SubProducts field in *Product Catalog*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product_catalog.subproducts[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  subproducts: prismic.GroupField<
+    Simplify<ProductCatalogDocumentDataSubproductsItem>
+  >;
 }
 
 /**
@@ -122,6 +160,93 @@ export type ProductCatalogDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<
     Simplify<ProductCatalogDocumentData>,
     "product_catalog",
+    Lang
+  >;
+
+type ProductsDocumentDataSlicesSlice = SubProductSlice;
+
+/**
+ * Content for Products documents
+ */
+interface ProductsDocumentData {
+  /**
+   * Title field in *Products*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: products.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Product SubCatalog field in *Products*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: products.product_subcatalog
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  product_subcatalog: prismic.ContentRelationshipField<"product_catalog">;
+
+  /**
+   * Slice Zone field in *Products*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: products.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<ProductsDocumentDataSlicesSlice> /**
+   * Meta Title field in *Products*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: products.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Products*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: products.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Products*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: products.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Products document from Prismic
+ *
+ * - **API ID**: `products`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ProductsDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<ProductsDocumentData>,
+    "products",
     Lang
   >;
 
@@ -254,6 +379,7 @@ export type SettingsDocument<Lang extends string = string> =
 export type AllDocumentTypes =
   | PageDocument
   | ProductCatalogDocument
+  | ProductsDocument
   | SettingsDocument;
 
 /**
@@ -731,6 +857,21 @@ export interface ProductCatalogSliceDefaultPrimaryProductsItem {
 }
 
 /**
+ * Item in *ProductCatalog → With White Background → Primary → Products*
+ */
+export interface ProductCatalogSliceWithWhiteBackgroundPrimaryProductsItem {
+  /**
+   * Product field in *ProductCatalog → With White Background → Primary → Products*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product_catalog.withWhiteBackground.primary.products[].product
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  product: prismic.ContentRelationshipField<"product_catalog">;
+}
+
+/**
  * Primary content in *ProductCatalog → Default → Primary*
  */
 export interface ProductCatalogSliceDefaultPrimary {
@@ -771,9 +912,52 @@ export type ProductCatalogSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *ProductCatalog → With White Background → Primary*
+ */
+export interface ProductCatalogSliceWithWhiteBackgroundPrimary {
+  /**
+   * Section Title field in *ProductCatalog → With White Background → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product_catalog.withWhiteBackground.primary.section_title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  section_title: prismic.RichTextField;
+
+  /**
+   * Products field in *ProductCatalog → With White Background → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product_catalog.withWhiteBackground.primary.products[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  products: prismic.GroupField<
+    Simplify<ProductCatalogSliceWithWhiteBackgroundPrimaryProductsItem>
+  >;
+}
+
+/**
+ * With White Background variation for ProductCatalog Slice
+ *
+ * - **API ID**: `withWhiteBackground`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProductCatalogSliceWithWhiteBackground =
+  prismic.SharedSliceVariation<
+    "withWhiteBackground",
+    Simplify<ProductCatalogSliceWithWhiteBackgroundPrimary>,
+    never
+  >;
+
+/**
  * Slice variation for *ProductCatalog*
  */
-type ProductCatalogSliceVariation = ProductCatalogSliceDefault;
+type ProductCatalogSliceVariation =
+  | ProductCatalogSliceDefault
+  | ProductCatalogSliceWithWhiteBackground;
 
 /**
  * ProductCatalog Shared Slice
@@ -832,6 +1016,78 @@ export type RichTextSlice = prismic.SharedSlice<
   RichTextSliceVariation
 >;
 
+/**
+ * Item in *SubProduct → Default → Primary → Sub Product*
+ */
+export interface SubProductSliceDefaultPrimarySubProductItem {
+  /**
+   * Title field in *SubProduct → Default → Primary → Sub Product*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: sub_product.default.primary.sub_product[].title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * background image field in *SubProduct → Default → Primary → Sub Product*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: sub_product.default.primary.sub_product[].background_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  background_image: prismic.ImageField<never>;
+}
+
+/**
+ * Primary content in *SubProduct → Default → Primary*
+ */
+export interface SubProductSliceDefaultPrimary {
+  /**
+   * Sub Product field in *SubProduct → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: sub_product.default.primary.sub_product[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  sub_product: prismic.GroupField<
+    Simplify<SubProductSliceDefaultPrimarySubProductItem>
+  >;
+}
+
+/**
+ * Default variation for SubProduct Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SubProductSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<SubProductSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *SubProduct*
+ */
+type SubProductSliceVariation = SubProductSliceDefault;
+
+/**
+ * SubProduct Shared Slice
+ *
+ * - **API ID**: `sub_product`
+ * - **Description**: SubProduct
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SubProductSlice = prismic.SharedSlice<
+  "sub_product",
+  SubProductSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -847,6 +1103,10 @@ declare module "@prismicio/client" {
       PageDocumentDataSlicesSlice,
       ProductCatalogDocument,
       ProductCatalogDocumentData,
+      ProductCatalogDocumentDataSubproductsItem,
+      ProductsDocument,
+      ProductsDocumentData,
+      ProductsDocumentDataSlicesSlice,
       SettingsDocument,
       SettingsDocumentData,
       SettingsDocumentDataNavigationItem,
@@ -879,12 +1139,20 @@ declare module "@prismicio/client" {
       ProductCatalogSlice,
       ProductCatalogSliceDefaultPrimaryProductsItem,
       ProductCatalogSliceDefaultPrimary,
+      ProductCatalogSliceWithWhiteBackgroundPrimaryProductsItem,
+      ProductCatalogSliceWithWhiteBackgroundPrimary,
       ProductCatalogSliceVariation,
       ProductCatalogSliceDefault,
+      ProductCatalogSliceWithWhiteBackground,
       RichTextSlice,
       RichTextSliceDefaultPrimary,
       RichTextSliceVariation,
       RichTextSliceDefault,
+      SubProductSlice,
+      SubProductSliceDefaultPrimarySubProductItem,
+      SubProductSliceDefaultPrimary,
+      SubProductSliceVariation,
+      SubProductSliceDefault,
     };
   }
 }

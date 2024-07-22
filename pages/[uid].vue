@@ -1,22 +1,40 @@
-<script setup lang="ts">
-import { components } from '~/slices'
+<script setup>
+import { usePrismic } from "@prismicio/vue";
+import { components } from "~/slices";
+import { useProducts } from "~/composables/useProducts";
 
-const prismic = usePrismic()
-const route = useRoute()
-const { data: page } = useAsyncData(route.params.uid as string, () =>
-  prismic.client.getByUID('page', route.params.uid as string)
-)
+import { useI18n } from "vue-i18n";
 
-useHead({
-  title: prismic.asText(page.value?.data.title)
-})
+const prismic = usePrismic();
+const route = useRoute();
+const { locale } = useI18n();
+
+const { data: page } = useAsyncData(route.params.uid, () =>
+  prismic.client.getByUID("products", route.params.uid, {
+    lang: locale.value,
+    fetchLinks: [
+      "product_catalog.background_image",
+      "product_catalog.product_type",
+      "product_catalog.uid",
+    ],
+  }),
+);
+
+const productCatalog = useProducts();
+
+// const filteredProducts = computed(() => {
+//   return productCatalog.value?.results.filter(
+//     (item) => item.uid === route.params.uid,
+//   );
+// });
 </script>
 
-
 <template>
-  <SliceZone
-    wrapper="main"
-    :slices="page?.data.slices ?? []"
-    :components="components"
-  />
+  <div>
+    <SliceZone
+      :slices="page?.data.slices ?? []"
+      :components="components"
+      wrapper="main"
+    />
+  </div>
 </template>

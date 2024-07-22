@@ -11,13 +11,20 @@ defineProps(
     "context",
   ]),
 );
+
+const localePath = useLocalePath();
 </script>
 
 <template>
   <section
     :data-slice-type="slice.slice_type"
     :data-slice-variation="slice.variation"
-    class="full-width content-grid space-y-16 bg-zinc-800 py-[10rem] md:py-[14rem]"
+    :class="{
+      'full-width content-grid space-y-16 bg-zinc-800 pb-[10rem] pt-20 md:pb-[14rem] md:pt-28':
+        slice.variation === 'default',
+      'space-y-16 py-20 lg:py-28': slice.variation !== 'default',
+    }"
+    id="product-catalog"
   >
     <PrismicRichText
       :field="slice.primary.section_title"
@@ -27,16 +34,17 @@ defineProps(
       <NuxtLink
         v-for="item in slice.primary.products"
         :key="item.product.id"
-        :to="item.product.slug"
+        :to="localePath(`/${item.product.uid}`)"
         class="group block aspect-square"
       >
         <article
-          class="custom-shadow relative flex aspect-square items-end overflow-clip p-6 md:p-8"
+          class="custom-shadow relative flex aspect-square items-end overflow-clip rounded-sm p-6 md:p-8"
         >
           <PrismicRichText
             :field="item.product.data.product_type"
             class="z-10 text-3xl font-semibold text-white group-hover:underline"
           />
+
           <PrismicImage
             :field="item.product.data.background_image"
             :width="item.product.data.background_image.dimensions?.width"

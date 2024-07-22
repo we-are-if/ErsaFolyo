@@ -42,6 +42,45 @@
         }
       },
       "items": {}
+    },
+    {
+      "id": "withWhiteBackground",
+      "name": "With White Background",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "section_title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Section Title",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading2"
+          }
+        },
+        "products": {
+          "type": "Group",
+          "config": {
+            "label": "Products",
+            "repeat": true,
+            "fields": {
+              "product": {
+                "type": "Link",
+                "config": {
+                  "label": "Product",
+                  "select": "document",
+                  "customtypes": [
+                    "product_catalog"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
     }
   ]
 }
