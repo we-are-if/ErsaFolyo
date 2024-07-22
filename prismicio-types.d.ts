@@ -973,6 +973,16 @@ export interface ProductCatalogSliceDefaultPrimary {
   products: prismic.GroupField<
     Simplify<ProductCatalogSliceDefaultPrimaryProductsItem>
   >;
+
+  /**
+   * UID field in *ProductCatalog → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product_catalog.default.primary.uid
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  uid: prismic.KeyTextField;
 }
 
 /**
@@ -1265,6 +1275,16 @@ export interface SubProductSliceDefaultPrimarySubProductItem {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   background_image: prismic.ImageField<never>;
+
+  /**
+   * UID field in *SubProduct → Default → Primary → Sub Product*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: sub_product.default.primary.sub_product[].uid
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  uid: prismic.KeyTextField;
 }
 
 /**

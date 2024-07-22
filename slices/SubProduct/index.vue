@@ -3,8 +3,9 @@ import { type Content } from "@prismicio/client";
 
 // The array passed to `getSliceComponentProps` is purely optional.
 // Consider it as a visual hint for you when templating your slice.
-defineProps(
-  getSliceComponentProps<Content.SubProductSlice>([
+// Define props
+const props = defineProps(
+  getSliceComponentProps<Content.SingleProductSlice>([
     "slice",
     "index",
     "slices",
@@ -12,7 +13,20 @@ defineProps(
   ]),
 );
 
+// Destructure slice from props
+const { slice } = props;
+
+// Access title
+
 const localePath = useLocalePath();
+
+function slugify(str) {
+  return str
+    .toLowerCase()
+    .trim()
+    .replace(/[\s\W-]+/g, "-") // Replace spaces and non-alphanumeric characters with hyphens
+    .replace(/^-+|-+$/g, ""); // Remove leading and trailing hyphens
+}
 </script>
 
 <template>
@@ -23,6 +37,7 @@ const localePath = useLocalePath();
   >
     <NuxtLink
       v-for="item in slice.primary.sub_product"
+      :to="localePath(`/single-product/${item.uid}`)"
       :key="item.title"
       class="group block aspect-square"
     >

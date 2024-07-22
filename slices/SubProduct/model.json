@@ -34,6 +34,13 @@
                   "constraint": {},
                   "thumbnails": []
                 }
+              },
+              "uid": {
+                "type": "Text",
+                "config": {
+                  "label": "UID",
+                  "placeholder": ""
+                }
               }
             }
           }

@@ -33,6 +33,11 @@
 						]
 					}
 				]
+			},
+			"uid": {
+				"__TYPE__": "FieldContent",
+				"value": "actually",
+				"type": "Text"
 			}
 		},
 		"items": []

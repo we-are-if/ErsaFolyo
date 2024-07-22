@@ -74,23 +74,38 @@ const handleClick = (index) => {
     :data-slice-variation="slice.variation"
     class="grid gap-8 py-20 md:py-28 lg:grid-cols-2"
   >
-    <PrismicImage
-      v-for="image in slice.primary.image_list.slice(
-        imageIndex,
-        imageIndex + 1,
-      )"
-      :key="image.image"
-      :field="image.image"
-      :width="image.image.dimensions?.width"
-      :heights="image.image.dimensions?.height"
-      :alt="image.image.alt"
-      class="custom-shadow aspect-square h-auto min-w-full overflow-clip rounded-sm lg:aspect-[3/5]"
-    />
-    <div class="space-y-16 py-1">
-      <PrismicRichText
-        :field="slice.primary.title"
-        class="max-w-[35ch] text-balance text-3xl font-semibold text-zinc-800 md:text-5xl"
+    <div class="sticky-container">
+      <PrismicImage
+        v-for="image in slice.primary.image_list.slice(
+          imageIndex,
+          imageIndex + 1,
+        )"
+        :key="image.image"
+        :field="image.image"
+        :width="image.image.dimensions?.width"
+        :heights="image.image.dimensions?.height"
+        :alt="image.image.alt"
+        class="custom-shadow relative aspect-square h-auto min-w-full overflow-clip rounded-sm object-cover"
       />
+      <p
+        class="absolute left-8 top-8 text-3xl font-bold text-zinc-50 lg:text-5xl"
+        v-for="image in slice.primary.image_list.slice(
+          imageIndex,
+          imageIndex + 1,
+        )"
+        :key="image.image.id"
+      >
+        {{ image.image.alt }}
+      </p>
+    </div>
+    <div class="space-y-16 py-1">
+      <div class="space-y-3">
+        <PrismicRichText
+          :field="slice.primary.title"
+          class="max-w-[35ch] text-balance text-3xl font-semibold text-zinc-800 md:text-5xl"
+        />
+      </div>
+
       <div class="flex flex-wrap gap-4">
         <div
           v-for="(item, index) in slice.primary.image_list"
@@ -99,6 +114,9 @@ const handleClick = (index) => {
         >
           <PrismicImage
             :field="item.image"
+            :width="item.image.dimensions?.width"
+            :heights="item.image.dimensions?.height"
+            :alt="item.image.alt"
             class="custom-shadow aspect-square h-auto min-w-full cursor-pointer rounded-full object-cover"
             @click="handleClick(index)"
           />
@@ -141,3 +159,13 @@ const handleClick = (index) => {
     </div>
   </section>
 </template>
+<style scoped>
+@media (min-width: 1024px) {
+  .sticky-container {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 200px; /* Adjust this value as needed */
+    align-self: start; /* Make sure it sticks to the top */
+  }
+}
+</style>

@@ -39,6 +39,13 @@
               }
             }
           }
+        },
+        "uid": {
+          "type": "Text",
+          "config": {
+            "label": "UID",
+            "placeholder": ""
+          }
         }
       },
       "items": {}

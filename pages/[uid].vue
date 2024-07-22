@@ -19,14 +19,6 @@ const { data: page } = useAsyncData(route.params.uid, () =>
     ],
   }),
 );
-
-const productCatalog = useProducts();
-
-// const filteredProducts = computed(() => {
-//   return productCatalog.value?.results.filter(
-//     (item) => item.uid === route.params.uid,
-//   );
-// });
 </script>
 
 <template>
