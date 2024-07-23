@@ -5,6 +5,7 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type PageDocumentDataSlicesSlice =
+  | ReferencesSlice
   | ProductCatalogSlice
   | ContactFormSlice
   | ContactUsSlice
@@ -1059,6 +1060,76 @@ export type ProductCatalogSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *References → Default → Primary → Images*
+ */
+export interface ReferencesSliceDefaultPrimaryImagesItem {
+  /**
+   * SingleImage field in *References → Default → Primary → Images*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: references.default.primary.images[].singleimage
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  singleimage: prismic.ImageField<never>;
+}
+
+/**
+ * Primary content in *References → Default → Primary*
+ */
+export interface ReferencesSliceDefaultPrimary {
+  /**
+   * Title field in *References → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: references.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Images field in *References → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: references.default.primary.images[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  images: prismic.GroupField<Simplify<ReferencesSliceDefaultPrimaryImagesItem>>;
+}
+
+/**
+ * Default variation for References Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ReferencesSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ReferencesSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *References*
+ */
+type ReferencesSliceVariation = ReferencesSliceDefault;
+
+/**
+ * References Shared Slice
+ *
+ * - **API ID**: `references`
+ * - **Description**: References
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ReferencesSlice = prismic.SharedSlice<
+  "references",
+  ReferencesSliceVariation
+>;
+
+/**
  * Primary content in *RichText → Default → Primary*
  */
 export interface RichTextSliceDefaultPrimary {
@@ -1393,6 +1464,11 @@ declare module "@prismicio/client" {
       ProductCatalogSliceVariation,
       ProductCatalogSliceDefault,
       ProductCatalogSliceWithWhiteBackground,
+      ReferencesSlice,
+      ReferencesSliceDefaultPrimaryImagesItem,
+      ReferencesSliceDefaultPrimary,
+      ReferencesSliceVariation,
+      ReferencesSliceDefault,
       RichTextSlice,
       RichTextSliceDefaultPrimary,
       RichTextSliceVariation,

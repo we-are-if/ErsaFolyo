@@ -12,6 +12,7 @@ export const components = defineSliceZoneComponents({
   product_catalog: defineAsyncComponent(
     () => import("./ProductCatalog/index.vue"),
   ),
+  references: defineAsyncComponent(() => import("./References/index.vue")),
   rich_text: defineAsyncComponent(() => import("./RichText/index.vue")),
   single_product: defineAsyncComponent(
     () => import("./SingleProduct/index.vue"),
