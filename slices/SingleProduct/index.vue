@@ -19,7 +19,7 @@ const title = slice.primary.title;
 
 // Form handling *start*
 const form = ref({
-  access_key: "aec20e4c-f688-4136-bd0b-6395c10d079b",
+  access_key: "e7a21026-f446-4679-ae7b-02510259d799",
   subject: `Someone is inquiring about ${title[0].text} product on the 'Ersa Folyo' website.`,
   email: "",
 });
