@@ -4,15 +4,15 @@
     "label": "Ana Sayfa"
   },
   {
+    "slug": "/#applications",
+    "label": "Uygulamalar"
+  },
+  {
     "slug": "/#about-us",
     "label": "Hakkımızda"
   },
   {
     "slug": "/#product-catalog",
-    "label": "Ürün Kataloğu"
-  },
-  {
-    "slug": "/#applications",
     "label": "Ürün Kataloğu"
   },
   {

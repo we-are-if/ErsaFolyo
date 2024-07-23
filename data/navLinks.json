@@ -4,16 +4,16 @@
     "label": "home"
   },
   {
+    "slug": "/#applications",
+    "label": "Applications"
+  },
+  {
     "slug": "/#about-us",
     "label": "About us"
   },
   {
     "slug": "/#product-catalog",
     "label": "Product catalog"
-  },
-  {
-    "slug": "/#applications",
-    "label": "Applications"
   },
   {
     "slug": "/contact-us",
