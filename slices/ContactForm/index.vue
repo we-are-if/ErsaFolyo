@@ -93,15 +93,15 @@ const submitForm = async () => {
         <div class="direct-contact flex flex-col items-start gap-3">
           <NuxtLink
             to="mailto:info@ersafolyo.com"
-            class="text-primary-700 text-base font-semibold lg:text-xl"
+            class="text-base font-semibold text-primary-700 lg:text-xl"
           >
             info@ersafolyo.com
           </NuxtLink>
           <NuxtLink
-            to="tel:+9647505550000"
-            class="text-primary-700 text-base font-semibold lg:text-xl"
+            to="tel:+905332815488"
+            class="text-base font-semibold text-primary-700 lg:text-xl"
           >
-            +964 750 555 0000
+            +90 533 281 5488
           </NuxtLink>
         </div>
       </div>

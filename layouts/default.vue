@@ -4,7 +4,7 @@
     <slot />
     <MainFooter />
     <NuxtLink
-      to="https://wa.me/971523957840"
+      to="https://wa.me/905332815488"
       class="custom-shadow fixed bottom-8 left-8 z-50 block flex size-16 items-center justify-center rounded-full"
     >
       <svg
