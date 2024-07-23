@@ -24,13 +24,12 @@ const localePath = useLocalePath();
         slice.variation === 'default',
       'space-y-16 py-20 lg:py-28': slice.variation !== 'default',
     }"
-    id="product-catalog"
   >
     <PrismicRichText
       :field="slice.primary.section_title"
       class="max-w-[34ch] text-balance text-3xl font-semibold text-zinc-100 md:text-5xl"
     />
-    <div class="grid gap-8 md:grid-cols-2">
+    <div class="grid gap-8 md:grid-cols-2" id="product-catalog">
       <NuxtLink
         v-for="item in slice.primary.products"
         :key="item.product.id"

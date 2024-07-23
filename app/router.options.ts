@@ -9,7 +9,7 @@ export default <RouterConfig>{
       console.log("to.hash: ", to.hash);
       return {
         el: to.hash,
-        top: 80, // adding an offset of 100px
+        top: 90, // adding an offset of 100px
         behavior: "smooth",
       };
     }
