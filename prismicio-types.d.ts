@@ -613,6 +613,31 @@ export type ApplicationsSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *ContactForm → Default → Primary → locations*
+ */
+export interface ContactFormSliceDefaultPrimaryLocationsItem {
+  /**
+   * title field in *ContactForm → Default → Primary → locations*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_form.default.primary.locations[].title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * map_location field in *ContactForm → Default → Primary → locations*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_form.default.primary.locations[].map_location
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  map_location: prismic.RichTextField;
+}
+
+/**
  * Primary content in *ContactForm → Default → Primary*
  */
 export interface ContactFormSliceDefaultPrimary {
@@ -695,6 +720,18 @@ export interface ContactFormSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   message: prismic.KeyTextField;
+
+  /**
+   * locations field in *ContactForm → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_form.default.primary.locations[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  locations: prismic.GroupField<
+    Simplify<ContactFormSliceDefaultPrimaryLocationsItem>
+  >;
 }
 
 /**
@@ -1443,6 +1480,7 @@ declare module "@prismicio/client" {
       ApplicationsSliceVariation,
       ApplicationsSliceDefault,
       ContactFormSlice,
+      ContactFormSliceDefaultPrimaryLocationsItem,
       ContactFormSliceDefaultPrimary,
       ContactFormSliceVariation,
       ContactFormSliceDefault,

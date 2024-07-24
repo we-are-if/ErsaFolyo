@@ -71,40 +71,58 @@ const submitForm = async () => {
     :data-slice-variation="slice.variation"
     class="grid gap-10 py-20 lg:grid-cols-2 lg:py-28"
   >
-    <PrismicImage
+    <!-- <PrismicImage
       :field="slice.primary.form_image"
       :width="slice.primary.form_image.dimensions?.width"
       :heights="slice.primary.form_image.dimensions?.height"
       :alt="slice.primary.form_image.alt"
       class="custom-shadow hidden h-auto min-h-full w-full rounded-md object-cover lg:block"
-    />
-    <div class="form-container space-y-16 py-4">
-      <div class="space-y-4">
+    /> -->
+    <div
+      class="details flex max-h-min w-full flex-col justify-center rounded-md p-6 lg:min-h-full lg:p-8"
+    >
+      <div class="space-y-10">
         <div class="form-title space-y-3">
           <PrismicRichText
             :field="slice.primary.form_title"
-            class="text-3xl font-semibold text-zinc-800 lg:text-5xl"
+            class="text-3xl font-semibold text-zinc-50 lg:text-5xl"
           />
           <PrismicRichText
             :field="slice.primary.form_subtitle"
-            class="text-base text-zinc-600 lg:text-xl"
+            class="text-base text-zinc-300 lg:text-xl"
           />
         </div>
         <div class="direct-contact flex flex-col items-start gap-3">
           <NuxtLink
             to="mailto:info@ersafolyo.com"
-            class="text-base font-semibold text-primary-700 lg:text-xl"
+            class="text-base font-semibold text-zinc-50 lg:text-xl"
           >
             info@ersafolyo.com
           </NuxtLink>
           <NuxtLink
             to="tel:+905332815488"
-            class="text-base font-semibold text-primary-700 lg:text-xl"
+            class="text-base font-semibold text-zinc-50 lg:text-xl"
           >
             +90 533 281 5488
           </NuxtLink>
         </div>
+        <div
+          class="form-title space-y-3"
+          v-for="item in slice.primary.locations"
+          :key="item.title"
+        >
+          <PrismicRichText
+            :field="item.title"
+            class="text-xl font-semibold text-zinc-50 lg:text-3xl"
+          />
+          <PrismicRichText
+            :field="item.map_location"
+            class="max-w-[45ch] text-base text-zinc-300 lg:text-lg"
+          />
+        </div>
       </div>
+    </div>
+    <div class="form-container space-y-16 py-8">
       <form class="space-y-6" @submit.prevent="submitForm">
         <div class="flex flex-col items-center gap-6 md:flex-row">
           <div class="flex w-full flex-col items-start gap-1.5">
@@ -158,5 +176,15 @@ textarea:focus {
 textarea {
   min-height: 7.5rem;
   padding-top: theme("spacing.4");
+}
+
+.details {
+  background:
+    url("~/assets/noise.png") repeat,
+    linear-gradient(
+      145deg,
+      theme("colors.primary.800"),
+      theme("colors.primary.600")
+    );
 }
 </style>

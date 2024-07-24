@@ -72,6 +72,33 @@
             "label": "Message",
             "placeholder": ""
           }
+        },
+        "locations": {
+          "type": "Group",
+          "config": {
+            "label": "locations",
+            "repeat": true,
+            "fields": {
+              "title": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "title",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "heading2"
+                }
+              },
+              "map_location": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "map_location",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph"
+                }
+              }
+            }
+          }
         }
       },
       "items": {}
