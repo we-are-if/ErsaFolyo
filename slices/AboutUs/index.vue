@@ -25,10 +25,11 @@ defineProps(
       class="mx-auto max-w-[25ch] text-balance text-center text-3xl font-semibold text-zinc-50 lg:text-5xl"
     />
     <div class="grid items-center md:grid-cols-2">
+      {{ slice.primary.image.dimensions?.height }}
       <PrismicImage
         :field="slice.primary.image"
-        :width="slice.primary.image.dimensions?.width"
-        :heights="slice.primary.image.dimensions?.height"
+        width="1904"
+        heights="1524"
         :alt="slice.primary.image.alt"
       />
       <div class="space-y-4">
