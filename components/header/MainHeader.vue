@@ -3,7 +3,7 @@
     class="full-width content-grid sticky left-0 right-0 top-0 z-50 border-b border-zinc-200 py-4"
   >
     <div class="flex items-center justify-between">
-      <NuxtLink :to="localePath('/')">
+      <NuxtLink :to="localePath('/')" aria-label="Go home">
         <Logo />
       </NuxtLink>
 

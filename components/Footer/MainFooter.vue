@@ -2,7 +2,7 @@
   <footer
     class="flex items-center justify-between border-t border-zinc-200 py-5"
   >
-    <NuxtLink :to="localePath('/')">
+    <NuxtLink :to="localePath('/')" aria-label="Go home">
       <Logo class="!min-w-min" />
     </NuxtLink>
 
