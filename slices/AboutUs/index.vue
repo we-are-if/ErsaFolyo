@@ -38,6 +38,24 @@ defineProps(
           :field="item.paragraph"
           class="text-base text-zinc-300 md:text-lg"
         />
+        <div class="flex flex-col items-center gap-6 pt-4 md:flex-row">
+          <NuxtLink
+            to="https://www.instagram.com/ersapvcfolyo/"
+            target="_blank"
+            class="btn flex items-end gap-3 border border-zinc-700 !text-base !text-zinc-300/90 transition-colors hover:border-zinc-500"
+          >
+            <Icon name="ph:instagram-logo" size="26px" />
+            @ersapvcfolyo
+          </NuxtLink>
+          <NuxtLink
+            to="https://www.facebook.com/profile.php?id=61562041239648"
+            target="_blank"
+            class="btn flex items-end gap-3 border border-zinc-700 !text-base !text-zinc-300/90 transition-colors hover:border-zinc-500"
+          >
+            <Icon name="streamline:facebook-1" size="21px" />
+            @ersafolyo
+          </NuxtLink>
+        </div>
       </div>
     </div>
   </section>
