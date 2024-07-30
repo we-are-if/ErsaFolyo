@@ -20,7 +20,7 @@ const localePath = useLocalePath();
     :data-slice-type="slice.slice_type"
     :data-slice-variation="slice.variation"
     :class="{
-      'full-width content-grid space-y-16 bg-zinc-800 pb-[10rem] pt-20 md:pb-[14rem] md:pt-28':
+      'full-width content-grid -mt-[1px] space-y-16 bg-zinc-800 pb-[10rem] pt-20 md:pb-[14rem] md:pt-28':
         slice.variation === 'default',
       'space-y-16 py-20 lg:py-28': slice.variation !== 'default',
     }"

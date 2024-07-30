@@ -2,7 +2,10 @@ import { repositoryName, apiEndpoint } from "./slicemachine.config.json";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  devtools: true,
+  site: {
+    url: "https://www.ersafolyo.com/",
+    name: "ErsaFolyo Website",
+  },
 
   app: {
     head: {
@@ -20,7 +23,13 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ["@nuxtjs/prismic", "@nuxtjs/tailwindcss", "@nuxtjs/i18n", "@nuxt/icon"],
+  modules: [
+    "@nuxtjs/prismic",
+    "@nuxtjs/tailwindcss",
+    "@nuxtjs/i18n",
+    "@nuxt/icon",
+    "@nuxtjs/sitemap",
+  ],
 
   // Localization options
   i18n: {

@@ -30,6 +30,8 @@ defineProps(
         width="1904"
         heights="1524"
         :alt="slice.primary.image.alt"
+        class="aspect-square h-auto w-full object-contain xl:scale-125"
+        style="clip-path: inset(5%)"
       />
       <div class="space-y-4">
         <PrismicRichText
@@ -38,7 +40,7 @@ defineProps(
           :field="item.paragraph"
           class="text-base text-zinc-300 md:text-lg"
         />
-        <div class="flex flex-col items-center gap-6 pt-4 md:flex-row">
+        <div class="flex flex-row items-center gap-6 pb-10 pt-4">
           <NuxtLink
             to="https://www.instagram.com/ersapvcfolyo/"
             target="_blank"

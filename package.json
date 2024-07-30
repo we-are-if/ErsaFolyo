@@ -20,6 +20,7 @@
     "@nuxt/icon": "^1.4.0",
     "@nuxtjs/i18n": "^8.3.1",
     "@nuxtjs/prismic": "^3.3.2",
+    "@nuxtjs/sitemap": "^6.0.0-beta.1",
     "@nuxtjs/tailwindcss": "^6.12.1",
     "@slicemachine/adapter-nuxt": "^0.3.42",
     "concurrently": "^8.2.2",
