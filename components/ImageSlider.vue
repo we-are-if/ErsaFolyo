@@ -19,7 +19,7 @@
           :heights="item.bg_image.dimensions?.height"
           :alt="item.bg_image.alt"
           class="absolute inset-0 block min-h-full min-w-full brightness-75"
-          loading="lazy"
+          priority
         />
         <PrismicRichText
           :field="item.title"
