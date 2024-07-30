@@ -16,7 +16,12 @@ export default defineNuxtConfig({
       meta: [
         { charset: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
-        { hid: "description", name: "description", content: "" },
+        {
+          hid: "description",
+          name: "description",
+          content:
+            "ERSAFOLYO: Your trusted source for premium PVC foils. We import trendy membrane and vacuum press PVC foils from the Far East, offering fast, reliable service and solution-oriented marketing. Experience our industry expertise and join our valued partners in the PVC foil sector.",
+        },
         { name: "format-detection", content: "telephone=no" },
       ],
       link: [{ rel: "icon", type: "image/svg", href: "/logo.svg" }],
@@ -29,6 +34,7 @@ export default defineNuxtConfig({
     "@nuxtjs/i18n",
     "@nuxt/icon",
     "@nuxtjs/sitemap",
+    "@nuxtjs/robots"
   ],
 
   // Localization options
