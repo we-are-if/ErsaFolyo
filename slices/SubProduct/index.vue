@@ -55,6 +55,7 @@ function slugify(str) {
           :heights="item.background_image.dimensions?.height"
           :alt="item.background_image.alt"
           class="absolute inset-0 block aspect-square h-auto min-w-full brightness-75"
+          loading="lazy"
         />
       </article>
     </NuxtLink>

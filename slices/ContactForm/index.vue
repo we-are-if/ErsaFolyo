@@ -71,13 +71,6 @@ const submitForm = async () => {
     :data-slice-variation="slice.variation"
     class="grid gap-10 py-20 lg:grid-cols-2 lg:py-28"
   >
-    <!-- <PrismicImage
-      :field="slice.primary.form_image"
-      :width="slice.primary.form_image.dimensions?.width"
-      :heights="slice.primary.form_image.dimensions?.height"
-      :alt="slice.primary.form_image.alt"
-      class="custom-shadow hidden h-auto min-h-full w-full rounded-md object-cover lg:block"
-    /> -->
     <div
       class="details flex max-h-min w-full flex-col justify-center rounded-md p-6 lg:min-h-full lg:p-8"
     >

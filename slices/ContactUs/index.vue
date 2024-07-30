@@ -27,6 +27,7 @@ const localePath = useLocalePath();
       :heights="slice.primary.bg_image.dimensions?.height"
       :alt="slice.primary.bg_image.alt"
       class="absolute inset-0 -z-10 block min-h-full min-w-full brightness-75"
+      loading="lazy"
     />
     <div class="flex flex-col items-center justify-center gap-8">
       <PrismicRichText

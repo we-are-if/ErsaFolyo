@@ -86,6 +86,7 @@ const handleClick = (index) => {
         :heights="image.image.dimensions?.height"
         :alt="image.image.alt"
         class="custom-shadow relative aspect-square h-auto min-w-full overflow-clip rounded-sm object-cover"
+        loading="lazy"
       />
       <p
         class="absolute left-8 top-8 text-3xl font-bold text-zinc-50 lg:text-5xl"

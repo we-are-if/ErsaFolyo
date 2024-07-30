@@ -32,6 +32,7 @@ defineProps(
         :alt="slice.primary.image.alt"
         class="aspect-square h-auto w-full object-contain xl:scale-125"
         style="clip-path: inset(5%)"
+        loading="lazy"
       />
       <div class="space-y-4">
         <PrismicRichText
