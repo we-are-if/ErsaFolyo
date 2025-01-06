@@ -43,12 +43,12 @@ defineProps(
         />
         <div class="flex flex-row items-center gap-6 pb-10 pt-4">
           <NuxtLink
-            to="https://www.instagram.com/ersapvcfolyo/"
+            to="https://www.instagram.com/ersa.folyo/"
             target="_blank"
             class="btn flex items-end gap-3 border border-zinc-700 !text-base !text-zinc-300/90 transition-colors hover:border-zinc-500"
           >
             <Icon name="ph:instagram-logo" size="26px" />
-            @ersapvcfolyo
+            @ersa.folyo
           </NuxtLink>
           <NuxtLink
             to="https://www.facebook.com/profile.php?id=61562041239648"
